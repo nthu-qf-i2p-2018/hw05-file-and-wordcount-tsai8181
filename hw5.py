@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[40]:
+# In[8]:
 
 
 import csv
@@ -10,7 +10,7 @@ import string
 import pickle
 
 
-# In[45]:
+# In[9]:
 
 
 def main(filename):
@@ -25,17 +25,17 @@ def main(filename):
                 all_words.append(word)
     from collections import Counter
     counter=Counter(all_words)
-    with open('wordcount.csv','w')as csv_file:
+    with open('wordcount.csv','w',newline='')as csv_file:
         writer=csv.writer(csv_file,delimiter=',')
         writer.writerow(['word','count'])
-        writer.writerow(counter.most_common())
+        writer.writerows(counter.most_common())
     with open('wordcount.json','w')as json_file:
         json.dump(counter,json_file)
     with open('wordcount.pkl','wb')as pkl_file:
         pickle.dump(counter,pkl_file)
 
 
-# In[46]:
+# In[10]:
 
 
 if __name__ == '__main__':
